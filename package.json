@@ -1,0 +1,25 @@
+{
+  "name": "node-shell",
+  "version": "1.0.0",
+  "description": "simple workshop fullstack",
+  "main": "bash.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbarabander/node-shell.git"
+  },
+  "keywords": [
+    "node-bash"
+  ],
+  "author": "Justin Barabander & Kim Leung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbarabander/node-shell/issues"
+  },
+  "homepage": "https://github.com/jbarabander/node-shell#readme",
+  "dependencies": {
+    "request": "^2.60.0"
+  }
+}
