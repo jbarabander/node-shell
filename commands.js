@@ -31,7 +31,7 @@ module.exports = {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
       if (err) throw err;
       callback(data + '\n');
-    });//FIXME
+    });
   },
   head: function(file, callback) {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {

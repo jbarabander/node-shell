@@ -11,9 +11,10 @@ var done = function(output) {
 process.stdin.on('data', function(d) {
 
   var cmd = d.toString().trim(); // remove the newline
-  cmdList = cmd.split(/\s*|\s*/g);
+  cmdList = cmd.split(/\s*\|\s*/g);
   var cmd1 = cmdList[0];
-  var cmd1 = cmd.split(' ');
+  var cmd1 = cmd1.split(' ');
+  var stdin = cmdList[1];
   // console.log(process.argv);
   commands[cmd1[0]](cmd1[1],done);
 });
