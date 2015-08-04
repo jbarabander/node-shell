@@ -2,13 +2,13 @@ var fs = require('fs');
 var request = require('request');
 
 module.exports = {
-  pwd: function(file,callback) {
+  pwd: function(stdin,file,callback) {
     callback(process.cwd() + '\n');
   },
-  date: function(file,callback) {
+  date: function(stdin,file,callback) {
     callback(Date() + '\n');
   },
-  ls: function(file,callback) {
+  ls: function(stdin,file,callback) {
     fs.readdir('.', function(err, files) {
       if (err) throw err;
       var str ='';
@@ -18,7 +18,7 @@ module.exports = {
       callback(str);
     });
   },
-  echo: function(file, callback) {
+  echo: function(stdin, file, callback) {
     if(file[0] === "$") {
       var envVarName = file.slice(1);
       callback(process.env[envVarName].toString() + "\n");
@@ -27,13 +27,13 @@ module.exports = {
       callback(file.toString() + "\n");
     }
   },
-  cat: function(file, callback) {
+  cat: function(stdin, file, callback) {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
       if (err) throw err;
       callback(data + '\n');
     });
   },
-  head: function(file, callback) {
+  head: function(stdin, file, callback) {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
       if (err) throw err;
       data = data.split('\n');
@@ -41,7 +41,7 @@ module.exports = {
       callback(data + '\n');
     });
   },
-  tail: function(file, callback) {
+  tail: function(stdin, file, callback) {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
       if (err) throw err;
       data = data.split('\n');
@@ -49,7 +49,7 @@ module.exports = {
       callback(data + '\n');
     });
   },
-  sort: function(file, callback) {
+  sort: function(stdin, file, callback) {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
       if (err) throw err;
       data = data.split('\n');
@@ -60,7 +60,7 @@ module.exports = {
       callback(data + '\n');
     })
   },
-  wc: function(file,callback) {
+  wc: function(stdin, file,callback) {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
       if(err) throw err;
       data = data.split('\n');
@@ -68,7 +68,7 @@ module.exports = {
       callback(data.length + '\n');
     })
   },
-  uniq: function(file, callback) {
+  uniq: function(stdin, file, callback) {
     fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
       if(err) throw err;
       data = data.split('\n');
@@ -79,7 +79,7 @@ module.exports = {
       callback(newArr + '\n');
     })
   },
-  curl: function(url, callback) {
+  curl: function(stdin, url, callback) {
     request(url, function(err, response, body) {
       // console.log(body);
       if(err) throw err;

@@ -16,6 +16,6 @@ process.stdin.on('data', function(d) {
   var cmd1 = cmd1.split(' ');
   var stdin = cmdList[1];
   // console.log(process.argv);
-  commands[cmd1[0]](cmd1[1],done);
+  commands[cmd1[0]](stdin,cmd1[1],done);
 });
 // commandName = process.argv[3];
